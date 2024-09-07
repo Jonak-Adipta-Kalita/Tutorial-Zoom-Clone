@@ -1,6 +1,7 @@
 import "react-native-reanimated";
 
 import * as SecureStore from "expo-secure-store";
+import * as SplashScreen from "expo-splash-screen";
 
 import { Slot } from "expo-router";
 import { ClerkProvider, ClerkLoaded } from "@clerk/clerk-expo";
@@ -37,6 +38,8 @@ const tokenCache = {
     }
   },
 };
+
+SplashScreen.preventAutoHideAsync();
 
 export default () => {
   return (
