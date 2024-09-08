@@ -1,10 +1,11 @@
-import { View, Text } from "react-native";
+import { Tabs } from "expo-router";
 import React from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default () => {
   return (
-    <View>
-      <Text>CallRouteLayout</Text>
-    </View>
+    <SafeAreaView style={{ flex: 1 }}>
+      <Tabs></Tabs>
+    </SafeAreaView>
   );
 };

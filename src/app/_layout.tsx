@@ -1,4 +1,5 @@
 import "react-native-reanimated";
+import "../globals.css";
 
 import * as SecureStore from "expo-secure-store";
 
