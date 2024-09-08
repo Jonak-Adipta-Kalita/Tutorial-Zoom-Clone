@@ -1,10 +1,14 @@
 import "react-native-reanimated";
 
 import * as SecureStore from "expo-secure-store";
-import * as SplashScreen from "expo-splash-screen";
 
 import { Slot } from "expo-router";
 import { ClerkProvider, ClerkLoaded } from "@clerk/clerk-expo";
+import { LogBox } from "react-native";
+
+LogBox.ignoreLogs([
+  "Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production",
+]);
 
 const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!;
 
@@ -38,8 +42,6 @@ const tokenCache = {
     }
   },
 };
-
-SplashScreen.preventAutoHideAsync();
 
 export default () => {
   return (
