@@ -1,0 +1,29 @@
+{
+  "cli": {
+    "version": ">= 12.3.0",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY": "pk_test_aGFybWxlc3Mtc2lsa3dvcm0tNzQuY2xlcmsuYWNjb3VudHMuZGV2JA",
+        "EXPO_PUBLIC_GET_STREAM_API_KEY": "dwq5twvmszny",
+        "EXPO_PUBLIC_API_URL": "https://example.com"
+      },
+      "ios": {
+        "simulator": true
+      }
+    },
+    "preview": {
+      "distribution": "internal"
+    },
+    "production": {
+      "autoIncrement": true
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
