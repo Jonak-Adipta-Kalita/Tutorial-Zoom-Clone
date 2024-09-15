@@ -33,6 +33,7 @@ export default () => {
   };
 
   const tokenProvider = async () => {
+    console.log(`${process.env.EXPO_PUBLIC_API_URL}/generateUserToken`);
     const response = await fetch(
       `${process.env.EXPO_PUBLIC_API_URL}/generateUserToken`,
       {
