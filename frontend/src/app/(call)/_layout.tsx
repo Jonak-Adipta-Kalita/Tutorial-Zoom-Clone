@@ -90,7 +90,7 @@ export default () => {
               unmountOnBlur: true,
               header: () => null,
               tabBarIcon: ({ color }) => (
-                <View className="absolute justify-center items-center top-[-10px] left-[20px] right-[20px] bottom-0 m-auto rounded-[50px] z-[100px] bg-white border-gray-500 border-[0.2px] border-t border-b-0">
+                <View className="absolute justify-center items-center top-[-10px] left-[20px] right-[20px] bottom-0 m-auto rounded-[50px] z-[100px] bg-white border-gray-500 border-[1px] border-t border-b-0">
                   <FontAwesome
                     name="plus-circle"
                     size={30}

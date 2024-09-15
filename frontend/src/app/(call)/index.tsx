@@ -14,7 +14,7 @@ export default () => {
         className="absolute top-[20px] right-[20px] z-[100px]"
         onPress={() => setDialogOpen(true)}
       >
-        <MaterialCommunityIcons name="exit-run" size={24} color={"#5F5DEC"} />
+        <MaterialCommunityIcons name="logout" size={24} color={"#5F5DEC"} />
       </TouchableOpacity>
       <Dialog.Container visible={dialogOpen}>
         <Dialog.Title>Sign Out</Dialog.Title>
