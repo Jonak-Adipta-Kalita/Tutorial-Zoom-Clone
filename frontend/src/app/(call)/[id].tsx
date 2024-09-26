@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from "react";
 import {
   Call,
+  CallContent,
   CallingState,
   StreamCall,
   useStreamVideoClient,
 } from "@stream-io/video-react-native-sdk";
-import { useLocalSearchParams } from "expo-router";
-import { ActivityIndicator, View } from "react-native";
+import { useLocalSearchParams, useRouter } from "expo-router";
+import { ActivityIndicator, TouchableOpacity, View } from "react-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 export default () => {
   const { id } = useLocalSearchParams();
   const [call, setCall] = useState<Call | null>(null);
   const [slug, setSlug] = useState<string | null>(null);
   const client = useStreamVideoClient();
+  const router = useRouter();
 
   useEffect(() => {
     let slug: string;
@@ -48,5 +51,27 @@ export default () => {
     );
   }
 
-  return <StreamCall call={call}></StreamCall>;
+  return (
+    <StreamCall call={call}>
+      <View>
+        <View className="absolute top-[10px] left-[10px] z-[100]">
+          <RoomId slug={slug} />
+        </View>
+        <GestureHandlerRootView style={{ flex: 1 }}>
+          <CallContent onHangupCallHandler={() => router.back()} />
+        </GestureHandlerRootView>
+      </View>
+    </StreamCall>
+  );
+};
+
+const RoomId = ({ slug }: { slug: string }) => {
+  return (
+    <TouchableOpacity
+      onPress={() => copySlug(slug)}
+      className="bg-[rgba(0,0,0,0.5)] p-10 border-[5px]"
+    >
+      {/* <Text>Call ID: {formatSlug(slug)}</Text> */}
+    </TouchableOpacity>
+  );
 };
