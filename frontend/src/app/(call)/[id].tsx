@@ -7,8 +7,10 @@ import {
   useStreamVideoClient,
 } from "@stream-io/video-react-native-sdk";
 import { useLocalSearchParams, useRouter } from "expo-router";
-import { ActivityIndicator, TouchableOpacity, View } from "react-native";
+import { ActivityIndicator, TouchableOpacity, View, Text } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { copySlug, formatSlug } from "@/src/utils/slug";
+import { generateSlug } from "random-word-slugs";
 
 export default () => {
   const { id } = useLocalSearchParams();
@@ -27,7 +29,13 @@ export default () => {
         setCall(_call);
       });
     } else {
-      slug = "demo_room";
+      slug = generateSlug(3, {
+        categories: {
+          adjective: ["color", "personality"],
+          noun: ["animals", "food"],
+        },
+      });
+      // TODO: Check if the slug is already in use
       const _call = client?.call("default", slug);
       _call?.join({ create: true }).then(() => {
         setCall(_call);
@@ -71,7 +79,7 @@ const RoomId = ({ slug }: { slug: string }) => {
       onPress={() => copySlug(slug)}
       className="bg-[rgba(0,0,0,0.5)] p-10 border-[5px]"
     >
-      {/* <Text>Call ID: {formatSlug(slug)}</Text> */}
+      <Text>Call ID: {formatSlug(slug)}</Text>
     </TouchableOpacity>
   );
 };
