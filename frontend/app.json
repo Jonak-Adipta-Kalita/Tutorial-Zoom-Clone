@@ -14,7 +14,12 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bitcode": false
+      "bitcode": false,
+      "bundleIdentifier": "com.jonakadiptakalita.jakzoomclone",
+      "infoPlist": {
+        "NSCameraUsageDescription": "This app uses the camera to allow you to take photos and videos.",
+        "NSMicrophoneUsageDescription": "This app uses the microphone to allow you to record audio."
+      }
     },
     "android": {
       "adaptiveIcon": {
