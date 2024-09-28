@@ -20,3 +20,11 @@ export const formatSlug = (slug: string | null) => {
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
 };
+
+export const inverseFormatSlug = (title: string | null) => {
+  if (!title) return "";
+  return title
+    .split(" ")
+    .map((word) => word.toLowerCase())
+    .join("-");
+};

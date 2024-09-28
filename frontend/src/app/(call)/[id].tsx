@@ -11,6 +11,7 @@ import { ActivityIndicator, TouchableOpacity, View, Text } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { copySlug, formatSlug } from "@/src/utils/slug";
 import { generateSlug } from "random-word-slugs";
+import Toast from "react-native-root-toast";
 
 export default () => {
   const { id } = useLocalSearchParams();
@@ -38,6 +39,15 @@ export default () => {
       // TODO: Check if the slug is already in use
       const _call = client?.call("default", slug);
       _call?.join({ create: true }).then(() => {
+        Toast.show(
+          "Call created Successfully\nTap here to COPY the call ID to share!",
+          {
+            duration: Toast.durations.LONG,
+            position: Toast.positions.CENTER,
+            shadow: true,
+            onPress: () => copySlug(slug),
+          }
+        );
         setCall(_call);
       });
     }
