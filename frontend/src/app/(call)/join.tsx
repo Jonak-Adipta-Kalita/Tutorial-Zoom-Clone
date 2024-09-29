@@ -36,15 +36,15 @@ export default () => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <Text className="p-20 font-bold">Enter the Room Name</Text>
+      <Text className="p-[20px] font-bold">Enter the Room Name</Text>
       <TextInput
         placeholder="e.g Black Purple Tiger"
         value={roomId}
         onChangeText={setRoomId}
-        className="p-20 w-full bg-white"
+        className="p-[20px] w-full bg-white"
       />
       <TouchableOpacity
-        className="p-20 bg-[#5F5DEC] w-full items-center justify-center"
+        className="p-[20px] bg-[#5F5DEC] w-full items-center justify-center"
         onPress={handleJoinRoom}
       >
         <Text className="text-white font-bold">Join Room</Text>

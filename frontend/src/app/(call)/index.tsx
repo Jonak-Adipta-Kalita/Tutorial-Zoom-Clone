@@ -11,7 +11,7 @@ export default () => {
   return (
     <View>
       <TouchableOpacity
-        className="absolute top-[20px] right-[20px] z-[100px]"
+        className="absolute top-[20px] right-[20px] z-[100]"
         onPress={() => setDialogOpen(true)}
       >
         <MaterialCommunityIcons name="logout" size={24} color={"#5F5DEC"} />

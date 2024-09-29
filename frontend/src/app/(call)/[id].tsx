@@ -87,7 +87,7 @@ const RoomId = ({ slug }: { slug: string }) => {
   return (
     <TouchableOpacity
       onPress={() => copySlug(slug)}
-      className="bg-[rgba(0,0,0,0.5)] p-10 border-[5px]"
+      className="bg-[rgba(0,0,0,0.5)] p-[10px] border-[5px]"
     >
       <Text>Call ID: {formatSlug(slug)}</Text>
     </TouchableOpacity>
