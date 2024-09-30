@@ -1,9 +1,10 @@
+import { formatSlug } from "@/src/utils/slug";
 import { useAuth, useUser } from "@clerk/clerk-expo";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Entypo, Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Call, useStreamVideoClient } from "@stream-io/video-react-native-sdk";
-import { useRouter } from "expo-router";
+import { Href, useRouter } from "expo-router";
 import { useEffect, useState } from "react";
-import { FlatList, TouchableOpacity, View } from "react-native";
+import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
 import Dialog from "react-native-dialog";
 
 export default () => {
@@ -17,7 +18,9 @@ export default () => {
   const [calls, setCalls] = useState<Call[]>();
   const [dialogOpen, setDialogOpen] = useState(false);
 
-  const handleJoinRoom = (id: string) => {};
+  const handleJoinRoom = (id: string) => {
+    router.push(`/call/${id}` as Href);
+  };
 
   const fetchCalls = async () => {
     if (!client || !user) return;
@@ -93,7 +96,54 @@ export default () => {
               }] border-b-[1px] border-b-[${
                 item.state.participantCount === 0 ? "#f1f1f1" : "#fff"
               }] flex-row items-center gap-[10px]`}
-            ></TouchableOpacity>
+            >
+              {item.state.participantCount === 0 ? (
+                <Feather name="phone-off" size={24} color="#f1f1f1" />
+              ) : (
+                <Feather name="phone-call" size={24} color="#f1f1f1" />
+              )}
+              <Image
+                source={{ uri: item.state.createdBy?.image }}
+                className="w-[50px] h-[50px] rounded-[25px]"
+              />
+              <View className="flex-1 justify-between items-center">
+                <View>
+                  <View>
+                    <Text className="font-bold text-[16px]">
+                      {item.state.createdBy?.name ||
+                        item.state.createdBy?.custom.email.split("@")[0]}
+                    </Text>
+                    <Text className="text-[12px]">
+                      {item.state.createdBy?.custom.email}
+                    </Text>
+                  </View>
+                  <View>
+                    <Text className="text-[10px] text-right w-full">
+                      {formatSlug(item.id)}
+                    </Text>
+                    <View className="flex-row items-center">
+                      {item.state.participantCount === 0 ? (
+                        <Text className="text-[10px] font-bold text-[#5F5DEC]">
+                          Call Ended
+                        </Text>
+                      ) : (
+                        <View className="rounded-[5px] flex-row items-center text-[#f1f1f1] p-[10px]">
+                          <Entypo
+                            name="users"
+                            size={14}
+                            color={"#5F5DEC"}
+                            style={{ marginRight: 5 }}
+                          />
+                          <Text className="text-[#5F5DEC] font-bold">
+                            {item.state.participantCount}
+                          </Text>
+                        </View>
+                      )}
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </TouchableOpacity>
           );
         }}
       />

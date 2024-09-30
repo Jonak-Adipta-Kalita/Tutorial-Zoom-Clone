@@ -71,7 +71,7 @@ export default () => {
 
   return (
     <StreamCall call={call}>
-      <View>
+      <View className="flex-1">
         <View className="absolute top-[10px] left-[10px] z-[100]">
           <RoomId slug={slug} />
         </View>
