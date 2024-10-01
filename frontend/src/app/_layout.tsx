@@ -8,6 +8,7 @@ import { Slot } from "expo-router";
 import { ClerkProvider, ClerkLoaded } from "@clerk/clerk-expo";
 import { LogBox } from "react-native";
 import { RootSiblingParent } from "react-native-root-siblings";
+import { StatusBar } from "expo-status-bar";
 
 LogBox.ignoreLogs([
   "Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production",
@@ -45,6 +46,7 @@ export default () => {
       <ClerkLoaded>
         <RootSiblingParent>
           <Slot />
+          <StatusBar style="dark" />
         </RootSiblingParent>
       </ClerkLoaded>
     </ClerkProvider>
