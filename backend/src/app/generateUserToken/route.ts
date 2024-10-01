@@ -11,7 +11,6 @@ if (!apiKey || !secret) {
 const client = new StreamClient(apiKey, secret);
 
 export const POST = async (req: NextRequest) => {
-  console.log("hello");
   const { userId, name, image, email } = await req.json();
 
   const newUser: UserRequest = {

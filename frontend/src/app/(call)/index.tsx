@@ -98,27 +98,27 @@ export default () => {
               }] flex-row items-center gap-[10px]`}
             >
               {item.state.participantCount === 0 ? (
-                <Feather name="phone-off" size={24} color="#f1f1f1" />
+                <Feather name="phone-off" size={24} color="gray" />
               ) : (
-                <Feather name="phone-call" size={24} color="#f1f1f1" />
+                <Feather name="phone-call" size={24} color="gray" />
               )}
               <Image
                 source={{ uri: item.state.createdBy?.image }}
                 className="w-[50px] h-[50px] rounded-[25px]"
               />
-              <View className="flex-1 justify-between items-center">
-                <View>
+              <View className="flex-1 justify-between">
+                <View className="flex-row justify-between items-center">
                   <View>
-                    <Text className="font-bold text-[16px]">
+                    <Text className="font-bold text-[16px] truncate">
                       {item.state.createdBy?.name ||
                         item.state.createdBy?.custom.email.split("@")[0]}
                     </Text>
-                    <Text className="text-[12px]">
+                    <Text className="text-[12px] text-gray-600 truncate">
                       {item.state.createdBy?.custom.email}
                     </Text>
                   </View>
-                  <View>
-                    <Text className="text-[10px] text-right w-full">
+                  <View className="ml-5">
+                    <Text className="text-[10px] text-right w-[100px]">
                       {formatSlug(item.id)}
                     </Text>
                     <View className="flex-row items-center">
