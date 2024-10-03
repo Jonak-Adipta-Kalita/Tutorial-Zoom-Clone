@@ -4,7 +4,14 @@ import { Entypo, Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Call, useStreamVideoClient } from "@stream-io/video-react-native-sdk";
 import { Href, useRouter } from "expo-router";
 import { useEffect, useState } from "react";
-import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
+import {
+  FlatList,
+  Image,
+  Switch,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import Dialog from "react-native-dialog";
 
 export default () => {
@@ -56,7 +63,7 @@ export default () => {
   }, [isMyCalls]);
 
   return (
-    <View>
+    <View className="py-[10px]">
       <TouchableOpacity
         className="absolute top-[20px] right-[20px] z-[100]"
         onPress={() => setDialogOpen(true)}
@@ -77,6 +84,27 @@ export default () => {
           }}
         />
       </Dialog.Container>
+      <View className="flex-row justify-center items-center p-[10px] gap-[10px]">
+        <Text
+          className={`text-${isMyCalls ? "black" : "#5F5DEC"}`}
+          onPress={() => setIsMyCalls(false)}
+        >
+          All Calls
+        </Text>
+        <Switch
+          trackColor={{ false: "#5F5DEC", true: "#5F5DEC" }}
+          thumbColor={"white"}
+          ios_backgroundColor={"#5F5DEC"}
+          onValueChange={() => setIsMyCalls(!isMyCalls)}
+          value={isMyCalls}
+        />
+        <Text
+          onPress={() => setIsMyCalls(true)}
+          className={`text-${!isMyCalls ? "black" : "#5F5DEC"}`}
+        >
+          My Calls
+        </Text>
+      </View>
       <FlatList
         data={calls}
         keyExtractor={(item) => item.id}
@@ -108,7 +136,7 @@ export default () => {
               />
               <View className="flex-1 justify-between">
                 <View className="flex-row justify-between items-center">
-                  <View>
+                  <View className="items-end gap-[50px]">
                     <Text className="font-bold text-[16px] truncate">
                       {item.state.createdBy?.name ||
                         item.state.createdBy?.custom.email.split("@")[0]}
