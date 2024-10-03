@@ -117,13 +117,7 @@ export default () => {
               key={item.id}
               onPress={() => handleJoinRoom(item.id)}
               disabled={item.state.participantCount === 0}
-              className={`p-[20px] text-[${
-                item.state.participantCount === 0 ? "#f1f1f1" : "#fff"
-              }] opacity-[${
-                item.state.participantCount === 0 ? 0.5 : 1
-              }] border-b-[1px] border-b-[${
-                item.state.participantCount === 0 ? "#f1f1f1" : "#fff"
-              }] flex-row items-center gap-[10px]`}
+              className={`p-[20px] text-[${item.state.participantCount === 0 ? "#f1f1f1" : "#fff"}] opacity-[${item.state.participantCount === 0 ? 0.5 : 1}] border-b-[1px]border-b-[${item.state.participantCount === 0 ? "#f1f1f1" : "#fffff"}] flex-row items-center gap-[10px]`} // prettier-ignore
             >
               {item.state.participantCount === 0 ? (
                 <Feather name="phone-off" size={24} color="gray" />
